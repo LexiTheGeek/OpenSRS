@@ -1,0 +1,43 @@
+{
+	"auth" : {
+		"access" : { 
+			"index" : {
+				"config"	: {
+					"title" 	: "Open Ed - Login",
+					"header"	: "Login Successful",
+					"subheader"	: "YAY!"
+				},
+				"views" : [
+					{	"path" 	: "login_success"	}
+				],
+				"acl" : {
+					"require" 		: ["access.granted"],
+					"require_one" 	: []
+				}
+			},
+			"login" : {
+				"views" : [
+					{"path":"logout_success"},
+					{"path":"login_error"},
+					{"path":"login_form"}
+				]
+			},
+			"lockout" : {
+				"views" : [
+					{"path":"login_excessive_attempts"}
+				]
+			},
+			"logout" : {}
+		},
+		"permissions" : {
+			"index" : {
+				"acl" : {
+					"require" 		: ["access.granted"],
+					"require_one" 	: ["student_profile.view_acad_hist"]
+				}
+			}
+			
+		}
+	}
+}
+
