@@ -61,6 +61,7 @@ class JSON_Manager{
 		
 		//File Not Found 
 		if(!isset($l_file)){
+
 			//Default to Empty Object
 			$l_file = '{}';
 			

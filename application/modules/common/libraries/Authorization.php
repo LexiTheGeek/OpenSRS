@@ -49,7 +49,7 @@ class Authorization {
 	
 	//Get Method Permissions
 	private function _get_acl($p_request){
-		return $this->_ci->json_manager->get($this->_acl_dir, $p_request);
+		return $this->_ci->json_manager->get($this->_acl_dir, $p_request . '.acl');
 	}
 	
 	//Require All Permissions in Array
