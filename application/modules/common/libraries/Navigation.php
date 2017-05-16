@@ -60,7 +60,8 @@ class Navigation {
 		//Local Variables
 		$l_calc_nav = true;
 		$l_counter = 0;
-		$l_fall_through = $this->_config_item('fall_through.enabled');		
+		$l_fall_through = $this->_config_item('fall_through.enabled');	
+		$l_fall_through_dir = $this->_config_item('fall_through.acl_dir');		
 					
 		//Initalization Cannot Occur Until auth Finishes
 		//So We Call Manually When We First Try to Access Library
@@ -79,43 +80,54 @@ class Navigation {
 		
 		//Calculate Navigation For User
 		if($l_calc_nav){
-			
+
 			//Menu Data Container		
 			$this->_data->$p_name = isset($this->_data->$p_name) ? $this->_data->$p_name : array();	
-			
+		
 			//Load Menu Config
 			$l_menu_data = $this->_get_menu_data($p_data);
 			
-			//Find Fall-Through Directory
-			$l_dir = $this->_config_item('fall_through.acl_dir');
-			
 			//Loop Over Links
-			foreach($l_menu_data as $i_link){				
-				//Get ACL
-				$l_acl = 	is_object($i_link) && isset($i_link->acl) 
-							? $i_link->acl 
-							: ($l_fall_through ? $this->_ci->json_manager->optional($l_dir, $i_link->url . '.acl') : array());
-				
-				//Has Access
-				if(count(array_keys($this->_ci->authorization->acl_filter($l_acl))) == 1){
-
-					//Get Ref to Menu Data
-					$l_data_ref = & $this->_data->$p_name;
-					
-					//Calc Menu ACL
-					$l_data_ref[$l_counter] = new stdClass();	
-					$l_data_ref[$l_counter]->url = $i_link->url;	
-					$l_data_ref[$l_counter++]->text = $i_link->text;			
-				}
-				
-				
-			}
+			$this->_data->$p_name = $this->_calc_nav_links($l_menu_data, $l_fall_through, $l_fall_through_dir);
 		}
 		
 		//Save Changes to Cookie
 		if( $this->_config_item('cookie.enabled') ){
 			$this->_save_to_cookie();
 		}	
+	}
+	
+	//Calculate Navigation Levels (Recursive, Allows Nested Menus)
+	private function _calc_nav_links($p_menu, $p_fallthrough, $p_fallthrough_dir){
+		//Local Variables
+		$l_counter = 0;
+		$r_links = array();
+		
+		//Loop Over Links
+		foreach($p_menu as $i_link){				
+			//Get ACL
+			$l_acl = 	is_object($i_link) && isset($i_link->acl) 
+						? $i_link->acl 
+						: ($p_fallthrough ? $this->_ci->json_manager->optional($p_fallthrough_dir, $i_link->url . '.acl') : array());
+			
+			//Has Access
+			if(count(array_keys($this->_ci->authorization->acl_filter($l_acl))) == 1){
+				//Create Link Records
+				$r_links[$l_counter] = new stdClass();
+				$r_links[$l_counter]->url = $i_link->url;
+				$r_links[$l_counter]->text = $i_link->text;
+				
+				//Recurse Over Sub-Menus
+				if(isset($i_link->sub)){
+					$r_links[$l_counter]->sub = $this->_calc_nav_links($i_link->sub, $p_fallthrough, $p_fallthrough_dir);
+				}
+				
+				//Increment
+				$l_counter++;
+			}
+		}
+		
+		return $r_links;
 	}
 	
 	//Object Initialized?

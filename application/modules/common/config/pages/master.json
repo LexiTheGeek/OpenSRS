@@ -31,9 +31,16 @@
 		},
 		"permissions" : {
 			"index" : {
+				"config"	: {
+					"title" 	: "Open Ed - Configure Roles",
+					"header"	: "Configure Roles"
+				},
+				"views" : [
+					{	"path" 	: "permission_roles"	}
+				],
 				"acl" : {
 					"require" 		: ["access.granted"],
-					"require_one" 	: ["student_profile.view_acad_hist"]
+					"require_one" 	: []
 				}
 			}
 			

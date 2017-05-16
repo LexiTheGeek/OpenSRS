@@ -52,7 +52,7 @@ class Publisher {
 				$l_page->merge($this->page($p_settings));
 			}
 		}else{
-			/********ERROR*********/ 
+			show_error('Unrecognized Function Signature: publisher->publish');
 		}
 	
 		//Validate Page Members

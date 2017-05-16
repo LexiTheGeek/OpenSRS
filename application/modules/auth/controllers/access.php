@@ -1,15 +1,16 @@
-<?php
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 //Access Control
 class Access extends MY_Controller {
     
 	//Main Page
-	public function index(){	
-		
+	public function index(){		
 		if( $this->has_access('auth.access.index') ){	
 			$this->publisher->publish('auth.access.index');	
+			
+			//Development Code (Keep ACL File Updated)
+			$this->load->library('Crons', null, null, 'common');
+			Crons::explode_acl_file('C:\xampp\htdocs\c2c\application\modules\common\config\pages\master.json');
 		}
 	}
 	

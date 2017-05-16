@@ -13,33 +13,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @link        http://community-auth.com
  */
 
-class Crons extends MY_Controller
+class Crons 
 {
-    /**
-     * This method is purely optional, and would be called via a cron job
-     * to perform garbage collection on the auth_sessions table.
-     *
-     * If you do set up a cron to run this garbage collection, you may 
-     * turn off the garbage collection on logout setting in config/authentication.php
-     */
-    public function auth_sessions_gc()
-    {
+	
+    public function auth_sessions_gc(){
         $auth_model = $this->authentication->auth_model;
 
         $this->{$auth_model}->auth_sessions_gc();
     }
 	
 	//Explode ACL File Into It's Components
-	public function explode_acl_file($p_filename){
+	public static function explode_acl_file($p_filename){
 		$l_fields = array('views', 'acl', 'config', 'data');
-		$l_file = module_path(__FILE__) . '\config\\' . $p_filename;
-		$l_success = file_exists($l_file);
+		$l_success = file_exists($p_filename);
 		
 		if(!$l_success){
 			//Error
 		}
 		
-		$this->_ci->json_manager->split($l_fields, $l_file);
+		get_instance()->json_manager->split($l_fields, $p_filename);
 	}
     
     // -----------------------------------------------------------------------

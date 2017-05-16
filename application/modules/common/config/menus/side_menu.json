@@ -1,5 +1,9 @@
 [
 	{	"url" 	: "auth.permissions.index",
-		"text"	: "Manage Users"
+		"text"	: "System Admin",
+		"sub"	: [
+			{	"url" : "auth.permissions.index",
+				"text": "Configure Roles"	}
+		]
 	}
 ]

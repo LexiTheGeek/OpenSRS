@@ -45,7 +45,7 @@ class MY_Loader extends MX_Loader {
 	}
 	
 	//Load library - Now supports cross module loading
-	public function library($library, $params = NULL, $object_name = NULL){	
+	public function library($library, $params = NULL, $object_name = NULL, $module = null){	
 		//Save Current Loaction
 		$location = $this->_module;
 		
