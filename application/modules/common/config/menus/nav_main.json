@@ -1,0 +1,15 @@
+[
+	{	"text"	: "System Admin",
+		"icon"	: {
+			"class" 	: "fa fa-home",
+			"postion"	: "BEFORE_TEXT"
+		},
+		"acl"	: {
+			"require" : ["access.granted"]
+		},
+		"sub"	: [
+			{	"url" : "auth.permissions.index",
+				"text": "Configure Roles"	}
+		]
+	}
+]

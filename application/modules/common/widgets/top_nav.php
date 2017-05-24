@@ -1,16 +1,16 @@
 <?php
 
-class Top_Nav extends Widget {
+require_once 'Auth_Widget.php';
 
-    public function display($data) {
-        
-		/*
-        if (!isset($data['items'])) {
-            $data['items'] = array('Home', 'About', 'Contact');
-        }
-		*/
-	
-        $this->view('widgets/top_nav', $data);
-    }
-    
+//Top Navigation
+class Top_Nav extends Auth_Widget {
+
+    public function display($p_template) {
+		$this->_view($p_template, 'top_nav', $this->_getAuth());
+	}
+				   
 }
+			
+
+
+
