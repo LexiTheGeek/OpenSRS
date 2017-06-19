@@ -1,0 +1,22 @@
+#attendees {
+	display	: none;
+	columns: 2;
+	-webkit-columns: 2;
+	-moz-columns: 2;
+}
+
+#attendees li{
+	padding-bottom:3px;
+	color:black;
+}
+
+#attendees li i{
+	cursor:pointer;
+}
+
+#attendees li span{
+	text-decoration:underline;
+}
+
+
+

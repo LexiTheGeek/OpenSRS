@@ -7,7 +7,7 @@ class Permissions extends MY_Controller {
 		if( $this->has_access('auth.permissions.index') ){	
 			$this->publisher->publish('auth.permissions.index');	
 		}
-	}	
+	}
 	
 }
 

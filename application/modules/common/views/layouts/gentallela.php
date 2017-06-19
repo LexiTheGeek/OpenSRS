@@ -84,8 +84,6 @@
 	<!-- Bootstrap -->
     <script src="<?php echo asset_url(); ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     
-	<!-- FastClick -->
-    <script src="<?php echo asset_url(); ?>vendors/fastclick/lib/fastclick.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo asset_url(); ?>gentallela/js/custom/custom.min.js"></script>

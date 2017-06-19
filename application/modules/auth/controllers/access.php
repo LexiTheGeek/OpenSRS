@@ -9,8 +9,7 @@ class Access extends MY_Controller {
 			$this->publisher->publish('auth.access.index');	
 			
 			//Development Code (Keep ACL File Updated)
-			$this->load->library('Crons', null, null, 'common');
-			Crons::explode_acl_file('C:\xampp\htdocs\c2c\application\modules\common\config\pages\master.json');
+			$this->json_manager->split(array('config', 'views', 'acl'), 'C:\xampp\htdocs\c2c\application\modules\common\config\pages\master.json');
 		}
 	}
 	

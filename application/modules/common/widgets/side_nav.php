@@ -6,7 +6,7 @@ require_once 'Menu_Widget.php';
 class Side_Nav extends Menu_Widget {
 	
 	//Display Side Menu
-	public function display($p_template, $p1 = null, $p2 = null, $p3 = null) {	//Signature Must Match Menu_Widget.display (Need Better Work Around)
+	public function display($p_template, $p1 = null, $p2 = null, $p3 = null) {	//Signature Must Match Menu_Widget.display (Want Better Work Around)
 		
 		//Display Menu
 		parent::display(	$p_template, 
