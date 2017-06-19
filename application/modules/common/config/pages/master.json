@@ -3,7 +3,7 @@
 		"access" : { 
 			"index" : {
 				"config"	: {
-					"title" 	: "Open Ed - Login",
+					"title" 	: "Change Title",
 					"header"	: "Login Successful",
 					"subheader"	: "YAY!"
 				},
@@ -42,8 +42,43 @@
 					"require" 		: ["access.granted"],
 					"require_one" 	: []
 				}
-			}
-			
+			}				
+		}
+	},
+	"advising" : {
+		"appointment" : {
+			"calendar" : {
+				"config"	: {
+					"title" 	: "Open Ed - Calendar",
+					"header"	: "Calendar",
+					"javascript": [	"http://localhost/c2c/assets/vendors/moment/moment.js", 
+									"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js",
+									"http://localhost/c2c/assets/vendors/fullcalendar/dist/fullcalendar.js",
+									"http://localhost/c2c/assets/modules/advising/appointment/calendar/js/calendar.js",
+									"http://localhost/c2c/assets/vendors/moment-timezone/moment-timezone.js",
+									"http://localhost/c2c/assets/vendors/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.js",
+									"http://localhost/c2c/assets/vendors/DataTables/datatables.js"
+									],
+					"stylesheet": [ "http://localhost/c2c/assets/vendors/fullcalendar/dist/fullcalendar.css",
+									"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css",
+									"http://localhost/c2c/assets/vendors/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css",
+									"http://localhost/c2c/assets/modules/advising/appointment/calendar/css/calendar.css",
+									"http://localhost/c2c/assets/vendors/DataTables/datatables.css"
+								   ]
+									
+									
+				},
+				"views" : [
+					{	"path" 	: 	"appointment/calendar/instructions" },
+					{	"path" 	: 	"appointment/calendar/calendar" },
+					{	"path" 	: 	"appointment/calendar/scheduler" },
+					{	"path" 	: 	"appointment/calendar/lookup" }				
+				],
+				"acl" : {
+					"require" 		: ["access.granted"],
+					"require_one" 	: []
+				}
+			}				
 		}
 	}
 }
