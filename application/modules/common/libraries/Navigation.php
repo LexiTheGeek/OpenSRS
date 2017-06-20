@@ -141,7 +141,7 @@ class Navigation {
 
 		//Import File
 		if(is_string($p_data)){
-			$r_menu_data = json_decode(file_get_contents(module_path(__FILE__). '\config\menus\\' . $p_data . '.json'));
+			$r_menu_data = json_decode(file_get_contents(module_path(__FILE__). '/config/menus/' . $p_data . '.json'));
 		
 		//Object Passed In
 		}else if(is_object($p_data)){

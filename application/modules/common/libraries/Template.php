@@ -46,7 +46,7 @@ class Template {
 		$this->_ci = & get_instance();
 
         // set the default widget path with APPPATH
-		$this->_widget_path = module_path(__FILE__) . '\widgets\\';
+		$this->_widget_path = module_path(__FILE__) . '/widgets/';
 		
         if (!empty($config)) {
             $this->initialize($config);

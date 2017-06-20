@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once APPPATH .'modules\common\models\community_auth_Model.php';
+require_once APPPATH .'modules/common/models/community_auth_Model.php';
 
 class MY_Model extends Community_Auth_Model
 {

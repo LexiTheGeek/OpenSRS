@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link        http://community-auth.com
  */
 
-require_once APPPATH .'modules\common\core\AH_Auth_Controller.php';
+require_once APPPATH .'modules/common/core/AH_Auth_Controller.php';
 
 class MY_Controller extends AH_Auth_Controller
 {

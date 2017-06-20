@@ -9,7 +9,7 @@ class Modules extends MX_Modules{
 	//Check if Module is Disabled
 	private static function _is_disabled($p_path){
 		//Extract Module
-		$module = explode('\\', str_replace(APPPATH . 'modules\\', '', str_replace('/', DIRECTORY_SEPARATOR, $p_path)))[0];
+		$module = explode(DIRECTORY_SEPARATOR, str_replace(APPPATH . 'modules/', '', str_replace('/', DIRECTORY_SEPARATOR, $p_path)))[0];
 		
 		//Load Settings
 		self::settings();

@@ -265,7 +265,7 @@ class Publisher {
 		$r_defaults = array();
 		
 		//Find dir we want to search
-		$l_dir = module_path(__FILE__) . '\config\\' . $this->_settings('page_config');
+		$l_dir = module_path(__FILE__) . '/config/' . $this->_settings('page_config');
 		
 		//Defaults to Find
 		$l_required = array('views');
