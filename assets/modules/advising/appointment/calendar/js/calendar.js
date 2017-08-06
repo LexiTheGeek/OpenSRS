@@ -20,13 +20,14 @@ $(document).ready(function() {
 		//Local Variables
 		$this = $(this);
 		$tr = $("<tr>");
+		$tds = $this.find("td");
 		
 		//Build Row
 		$tr.append('<td style="text-align: center;"><i class="glyphicon glyphicon-remove" style="cursor:pointer"></i></td>');
-		$tr.append($this.find("td").eq(1).clone());
-		$tr.append($this.find("td").eq(2).clone());
-		$tr.append($this.find("td").eq(3).clone());
-		$tr.append($this.find("td").eq(4).clone());	
+		$tr.append($tds.eq(1).clone());
+		$tr.append($tds.eq(2).clone());
+		$tr.append($tds.eq(3).clone());
+		$tr.append($tds.eq(4).clone());	
 		
 		//Add to DOM
 		$("#selectedStudents").append($tr);
@@ -85,6 +86,11 @@ $(document).ready(function() {
 	
 	//Create Lookup Table
 	$('#lookupTable').DataTable({
+		businessHours: {
+			dow: [ 1, 2, 3, 4, 5], // Monday - Friday
+			start: '8:00', 
+			end: '16:00'
+		},
 		data 	: [
 			[	"<input type='checkbox' value='94131853' name='attendeeSelect'>",
 				"94131853",
