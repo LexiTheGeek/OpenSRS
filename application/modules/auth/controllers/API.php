@@ -1,9 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
-//Change From Accepting GET to Accepting POST
-
-
 class API extends MY_Controller {
     
 	//Check Access to Requested Resource
@@ -16,7 +13,7 @@ class API extends MY_Controller {
 		
 		//Get Access
 		if($r_json->loggedIn){
-			$r_json->hasAccess = $this->has_access($this->input->get('acl'));
+			$r_json->hasAccess = $this->has_access($this->input->post('acl'));
 			$r_json->userID = $this->auth_user_id;
 			
 		}
