@@ -11,6 +11,6 @@
 */
 
 $config['parser']    = FALSE;
-$config['template']  = 'layouts/main';
+$config['template']  = 'layouts/gentallela';
 $config['cache_ttl'] = 0;
 

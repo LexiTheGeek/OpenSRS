@@ -14,4 +14,4 @@
 
 $config['json_manager'] = array();
 $config['json_manager']['paths'] = array();
-$config['json_manager']['paths']['pages'] = module_path(__FILE__) . '\config\pages';
+$config['json_manager']['paths']['pages'] = module_path(__FILE__) . '/config/pages';

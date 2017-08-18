@@ -1,6 +1,6 @@
 <?php if (!defined("BASEPATH")) exit("No direct script access allowed");
 
-class JSON_Manager{
+class Json_Manager{
 	
 	//Instance Variables
 	private $_dir; 

@@ -18,7 +18,7 @@ if( ! function_exists('hmvc_url') ){
 //Build HMVC Path
 if( ! function_exists('hmvc_path') ){
 	function hmvc_path(){
-		return APPPATH . 'modules\\';
+		return APPPATH . 'modules' . DIRECTORY_SEPARATOR;
 	}
 }
 

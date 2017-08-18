@@ -1,0 +1,29 @@
+[
+	{	"text"	: "Advising",
+		"icon"	: {
+			"class" 	: "fa fa-book",
+			"postion"	: "BEFORE_TEXT"
+		},
+		"acl"	: {
+			"require" : ["access.granted"]
+		},
+		"sub"	: [
+			{	"url" : "advising.appointment.calendar",
+				"text": "Calendar"	}
+		]
+	},
+	{	"text"	: "Settings",
+		"icon"	: {
+			"class" 	: "fa fa-cog",
+			"postion"	: "BEFORE_TEXT"
+		},
+		"acl"	: {
+			"require" : ["access.granted"]
+		},
+		"sub"	: [
+			{	"url" : "auth.permissions.index",
+				"text": "Configure Roles"	}
+		]
+	}
+]
+

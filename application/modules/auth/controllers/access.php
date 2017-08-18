@@ -9,8 +9,7 @@ class Access extends MY_Controller {
 			$this->publisher->publish('auth.access.index');	
 			
 			//Development Code (Keep ACL File Updated)
-			$this->load->library('Crons', null, null, 'common');
-			Crons::explode_acl_file('C:\xampp\htdocs\c2c\application\modules\common\config\pages\master.json');
+			$this->json_manager->split(array('config', 'views', 'acl'), 'C:\xampp\htdocs\c2c\application\modules\common\config\pages\master.json');
 		}
 	}
 	
@@ -21,12 +20,8 @@ class Access extends MY_Controller {
 		if( $this->uri->uri_string() == 'auth/access/login')
             show_404();
 		
-		//Form Submitted 
-        if( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' ){
-			//Attempt Login
-			$this->require_min_level(1);
-			exit;
-		}
+		//Verify Login
+		$this->require_min_level(1);
 		
 		//Setup Login Vars
 		$this->setup_login_form(); //CommunityAuth
@@ -34,10 +29,8 @@ class Access extends MY_Controller {
 		//Display Login Form
 		if(! isset( $on_hold_message ) ){	
 			
-			
 			//Load Page Config
 			$login_page = $this->publisher->page('auth.access.login');
-			
 			
 			//No Error Message, Remove From Page
 			if( is_null($this->load->get_var('login_error_mesg')) ){

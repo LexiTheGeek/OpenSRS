@@ -3,7 +3,7 @@
 		"access" : { 
 			"index" : {
 				"config"	: {
-					"title" 	: "Open Ed - Login",
+					"title" 	: "Change Title",
 					"header"	: "Login Successful",
 					"subheader"	: "YAY!"
 				},
@@ -42,8 +42,29 @@
 					"require" 		: ["access.granted"],
 					"require_one" 	: []
 				}
-			}
-			
+			}				
+		}
+	},
+	"advising" : {
+		"appointment" : {
+			"calendar" : {
+				"config"	: {
+					"title" 	: "Open Ed - Calendar",
+					"header"	: "Calendar",
+					"javascript": [	"http://localhost/c2c/assets/modules/calendar/dist/bundle.js"],
+					"stylesheet": []					
+				},
+				"views" : [
+					{	"path" 	: 	"appointment/calendar/instructions" },
+					{	"path" 	: 	"appointment/calendar/calendar" },
+					{	"path" 	: 	"appointment/calendar/scheduler" },
+					{	"path" 	: 	"appointment/calendar/lookup" }				
+				],
+				"acl" : {
+					"require" 		: ["access.granted"],
+					"require_one" 	: []
+				}
+			}				
 		}
 	}
 }

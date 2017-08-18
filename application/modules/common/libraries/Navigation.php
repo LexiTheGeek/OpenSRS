@@ -108,14 +108,15 @@ class Navigation {
 			//Get ACL
 			$l_acl = 	is_object($i_link) && isset($i_link->acl) 
 						? $i_link->acl 
-						: ($p_fallthrough ? $this->_ci->json_manager->optional($p_fallthrough_dir, $i_link->url . '.acl') : array());
+						: ($p_fallthrough && isset($i_link->url) ? $this->_ci->json_manager->optional($p_fallthrough_dir, $i_link->url . '.acl') : array());
 			
 			//Has Access
-			if(count(array_keys($this->_ci->authorization->acl_filter($l_acl))) == 1){
+			if(count($l_acl) == 0 || count(array_keys($this->_ci->authorization->acl_filter($l_acl))) == 1){
 				//Create Link Records
 				$r_links[$l_counter] = new stdClass();
-				$r_links[$l_counter]->url = $i_link->url;
-				$r_links[$l_counter]->text = $i_link->text;
+				$r_links[$l_counter]->url = isset($i_link->url) ? $i_link->url : null;
+				$r_links[$l_counter]->text = isset($i_link->text) ? $i_link->text : null;
+				$r_links[$l_counter]->icon = isset($i_link->icon) ? $i_link->icon : null;
 				
 				//Recurse Over Sub-Menus
 				if(isset($i_link->sub)){
@@ -140,7 +141,7 @@ class Navigation {
 
 		//Import File
 		if(is_string($p_data)){
-			$r_menu_data = json_decode(file_get_contents(module_path(__FILE__). '\config\menus\\' . $p_data . '.json'));
+			$r_menu_data = json_decode(file_get_contents(module_path(__FILE__). '/config/menus/' . $p_data . '.json'));
 		
 		//Object Passed In
 		}else if(is_object($p_data)){

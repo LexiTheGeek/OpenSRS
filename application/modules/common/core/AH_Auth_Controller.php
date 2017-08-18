@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 
-require_once APPPATH .'modules\common\core\Auth_Controller.php';
+require_once APPPATH .'modules/common/core/Auth_Controller.php';
 
 class AH_Auth_Controller extends Auth_Controller
 {
